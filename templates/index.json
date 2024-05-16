@@ -11,9 +11,37 @@
         "button_link": "",
         "bottom_text": "SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL"
       }
+    },
+    "spot_product_XdAQiU": {
+      "type": "spot-product",
+      "blocks": {
+        "product_qyyHUF": {
+          "type": "product",
+          "settings": {
+            "choose_product": "black-leather-bag",
+            "p_top": 56,
+            "p_left": 29
+          }
+        },
+        "product_8hiTMK": {
+          "type": "product",
+          "settings": {
+            "choose_product": "chequered-red-shirt",
+            "p_top": 38,
+            "p_left": 40
+          }
+        }
+      },
+      "block_order": [
+        "product_qyyHUF",
+        "product_8hiTMK"
+      ],
+      "settings": {
+      }
     }
   },
   "order": [
-    "hero_banner_EbYqUR"
+    "hero_banner_EbYqUR",
+    "spot_product_XdAQiU"
   ]
 }
