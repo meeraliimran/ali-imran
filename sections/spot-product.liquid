@@ -1,0 +1,114 @@
+{{ 'custom.css' | asset_url | stylesheet_tag }}
+{{ 'custom.js' | asset_url | script_tag }}
+
+<section id="product-grid">
+    <div class="container products-grid-wrap dis-flex">
+{% if section.blocks != null %}
+{% for block in section.blocks %}
+
+{% assign left = block.settings.p_left | times: 3 %}
+{% assign product = block.settings.choose_product %}
+
+        <div class="product-wrap" style="background: url('{{block.settings.choose_product.featured_image | image_url }}');background-size: cover;background-position: center;">
+            <div class="spot-wrap" style="left:{{block.settings.p_left}}%;top:{{block.settings.p_top}}%;" >
+                <img src="{{ 'product-spot.png' | asset_url }}" class="spot-btn" onclick="showDetail(event)">
+                <div class="product-info dis-flex mini-popup" style="left:-{{ left }}px" onclick="openModal(event)"
+                data-title="{{ product.title }}" data-img="{{ product.featured_image | image_url }}" data-price="{{ product.price | money }}"
+                data-desc="{{ product.description }}" data-variants='{{ product.variants | json }}' >
+                    <div class="p-thumbnail" style="background: url('{{block.settings.choose_product.featured_image | image_url }}');background-size: cover;background-position: center;min-height: 140px;width: 120px;display:block" ></div>
+                    <div class="p-content">
+                        <h3>{{block.settings.choose_product.title }}</h3>
+                        <p class="p-price">{{block.settings.choose_product.price | money }}</p>
+                        <p>{{block.settings.choose_product.description }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+{% endfor %}
+{% endif %}
+
+    </div>{% comment %} --- products Grid Wrap --- {% endcomment %}
+</section>{% comment %} --- Product Grid Section --- {% endcomment %}
+
+
+    <div class="aw-overlay">
+        <div class="product-modal">
+            <img src="{{ 'remove-icon.png' | asset_url }}" class="remove-modal" onclick="hideModal()">
+            <div class="product-info dis-flex">
+                <img id="modelImage" src="" style="width: 120px;display:block" >
+                <div class="p-content">
+                    <h3 id="modelTitle"></h3>
+                    <p class="p-price" id="modelPrice"></p>
+                    <p  id="modelDesc"></p>
+                </div>
+            </div>
+            <form id="add-to-cart-form" onsubmit="addToCart(event)">
+            <div class="form-wrap">
+                <label>Color</label>
+                <div class="color-variation-wrap" id="colorVar">
+                </div>
+                <label>Size</label>
+                <div class="size-select">
+                    <img src="{{ 'angle-down.png' | asset_url }}">
+                    <select id="sizeVar">
+                        <option value="">Choose your size</option>
+                    </select>
+                </div>
+                <button class="add-to-cart dis-flex">Add to cart 
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000"><path d="m700-300-57-56 84-84H120v-80h607l-83-84 57-56 179 180-180 180Z"/></svg>
+                </button>
+                <div id="awAlert"></div>
+            </div>
+            </form>
+        </div>
+    </div>
+
+
+{% schema %}
+{
+  "name": "Spot Product",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "product",
+          "label": "Choose Product",
+          "id": "choose_product"
+        },
+        {
+          "type": "range",
+          "label": "Position from Top",
+          "id": "p_top",
+          "default": 0,
+          "min": 0,
+          "max": 100,
+          "step": 1
+        },
+        {
+          "type": "range",
+          "label": "Position from Left",
+          "id": "p_left",
+          "default": 0,
+          "min": 0,
+          "max": 100,
+          "step": 1
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Spot Product"
+    }
+  ]
+}
+{% endschema %}
