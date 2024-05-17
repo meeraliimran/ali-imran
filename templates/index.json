@@ -38,12 +38,39 @@
             "p_top": 0,
             "p_left": 0
           }
+        },
+        "product_3fiikJ": {
+          "type": "product",
+          "settings": {
+            "choose_product": "ocean-blue-shirt",
+            "p_top": 0,
+            "p_left": 0
+          }
+        },
+        "product_aFbfRR": {
+          "type": "product",
+          "settings": {
+            "choose_product": "white-cotton-shirt",
+            "p_top": 0,
+            "p_left": 0
+          }
+        },
+        "product_KPjbX6": {
+          "type": "product",
+          "settings": {
+            "choose_product": "floral-white-top",
+            "p_top": 0,
+            "p_left": 0
+          }
         }
       },
       "block_order": [
         "product_qyyHUF",
         "product_8hiTMK",
-        "product_AUX9q7"
+        "product_AUX9q7",
+        "product_3fiikJ",
+        "product_aFbfRR",
+        "product_KPjbX6"
       ],
       "settings": {
       }
