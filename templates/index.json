@@ -30,11 +30,20 @@
             "p_top": 38,
             "p_left": 40
           }
+        },
+        "product_AUX9q7": {
+          "type": "product",
+          "settings": {
+            "choose_product": "dark-denim-top",
+            "p_top": 0,
+            "p_left": 0
+          }
         }
       },
       "block_order": [
         "product_qyyHUF",
-        "product_8hiTMK"
+        "product_8hiTMK",
+        "product_AUX9q7"
       ],
       "settings": {
       }
